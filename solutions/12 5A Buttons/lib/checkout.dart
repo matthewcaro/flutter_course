@@ -45,7 +45,7 @@ class _CheckoutState extends State<Checkout> {
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.payment),
-        onPressed: () => _checkout(),
+        onPressed: () => Navigator.pushNamed(context, "/ticket"),
       ),
     );
   }

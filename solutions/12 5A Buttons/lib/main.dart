@@ -1,7 +1,10 @@
 // ignore: unused_import
 import 'package:daam/checkout.dart';
+import 'package:daam/film_details.dart';
 // ignore: unused_import
 import 'package:daam/landing.dart';
+import 'package:daam/pick_seats.dart';
+import 'package:daam/ticket.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,7 +23,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Landing(),
+      routes: {
+        "/": (ctx)=> const Landing(),
+        "/film": (ctx)=>const FilmDetails(),
+        "/checkout": (ctx)=> const Checkout(),
+        "/pickSeats": (ctx)=>const PickSeats(),
+        "/ticket": (ctx)=>const Ticket()
+      }
     );
   }
 }

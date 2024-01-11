@@ -9,17 +9,19 @@ class FilmBrief extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.network(
-          '${getBaseUrl()}/${film.posterPath}',
-          height: 100,
-          fit: BoxFit.contain,
-        ),
-        Text(film.title),
-        Text(film.tagline ?? ""),
-        ShowingTimes(film: film, selectedDate: DateTime.now()),
-      ],
-    );
+    return GestureDetector(
+        onTap: () => Navigator.pushNamed(context, "/film"),
+        child: Column(
+          children: [
+            Image.network(
+              '${getBaseUrl()}/${film.posterPath}',
+              height: 100,
+              fit: BoxFit.contain,
+            ),
+            Text(film.title),
+            Text(film.tagline ?? ""),
+            ShowingTimes(film: film, selectedDate: DateTime.now()),
+          ],
+        ));
   }
 }

@@ -1,3 +1,4 @@
+import 'package:daam/pick_seats.dart';
 import 'package:daam/state/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -34,7 +35,7 @@ class _ShowingTimesState extends State<ShowingTimes> {
         Container(
           child: Column(
             children: _showings
-                .map((s) => makeTextWidget(s["showing_time"]))
+                .map((s) => _makeShowingWidget(s["showing_time"]))
                 .toList(),
           ),
         ),
@@ -49,4 +50,15 @@ class _ShowingTimesState extends State<ShowingTimes> {
         onPressed: () => print("Make this the current showing"),
         child: Text(timeString));
   }
+
+  Widget _makeShowingWidget(dynamic dateString){
+    DateTime showingTime = DateTime.parse(dateString);
+    String timeString = DateFormat.jm().format(showingTime.toLocal());
+    
+    return TextButton(
+      onPressed:()=> Navigator.pushNamed(context, "/pickSeats"),
+      child:Text(timeString)
+    );
+  }
+
 }
